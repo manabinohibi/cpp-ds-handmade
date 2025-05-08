@@ -1,0 +1,16 @@
+BasedOnStyle: Google
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortEnumsOnASingleLine: false
+ConstructorInitializerIndentWidth: 4
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+DerivePointerAlignment: false
+PointerAlignment: Left
+SpaceBeforeParens: ControlStatements
+IndentCaseLabels: true
+Cpp11BracedListStyle: true

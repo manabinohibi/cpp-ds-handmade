@@ -1,4 +1,5 @@
 #include "sample.hpp"
+
 #include <gtest/gtest.h>
 
 TEST(SampleVectorTest, PushBackAndSize) {
