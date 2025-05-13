@@ -1,20 +1,19 @@
 cmake_minimum_required(VERSION 3.14)
-project(ds_learning)
+project(cpp_ds_handmade LANGUAGES CXX)
 
-# C++17 or later推奨
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# GoogleTest
-add_subdirectory(third_party/googletest)
+# ヘッダオンリーの include path
+include_directories(${PROJECT_SOURCE_DIR}/include)
 
-enable_testing()
+# ベンチマークもいつか作りたい
+option(BUILD_TESTING "Build tests" ON)
+option(BUILD_BENCHMARKS "Build benchmarks" OFF)
 
-# テスト用ソースファイル
-add_executable(run_tests tests/sample_test.cpp)
+# テストサブディレクトリ
+if(BUILD_TESTING)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
-target_include_directories(run_tests PRIVATE ${PROJECT_SOURCE_DIR}/include)
-target_link_libraries(run_tests gtest gtest_main)
-
-include(GoogleTest)
-gtest_discover_tests(run_tests)
