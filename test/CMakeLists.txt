@@ -8,7 +8,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(sample_test sample_test.cpp)
+add_executable(vector_test vector_test.cpp)
 target_link_libraries(sample_test gtest_main)
+target_link_libraries(vector_test gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(sample_test)
+gtest_discover_tests(vector_test)
