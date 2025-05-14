@@ -20,8 +20,6 @@ class Vector {
     size_t capacity() const;
 
    private:
-    // void reallocate(size_t new_capacity);
-
     T* data_;
     size_t size_;
     size_t capacity_;

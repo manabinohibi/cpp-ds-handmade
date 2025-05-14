@@ -1,6 +1,7 @@
 #pragma once
 
 #include <algorithm>
+#include <iostream>
 
 namespace manabu::handmade {
 
@@ -14,9 +15,7 @@ Vector<T>::~Vector() {
 
 template <typename T>
 void Vector<T>::PushBack(const T& value) {
-    if (size_ < capacity_) {
-        data_[size_] = value;
-    } else {
+    if (size_ >= capacity_) {
         const size_t new_capacity = std::max(size_t{2}, capacity_ * 2);
         T* new_data = new T[new_capacity];
         for (size_t i = 0; i < size_; ++i) {
@@ -26,7 +25,26 @@ void Vector<T>::PushBack(const T& value) {
         data_ = new_data;
         capacity_ = new_capacity;
     }
+    data_[size_] = std::move(value);
     ++size_;
+}
+
+template <typename T>
+T& Vector<T>::operator[](size_t index) {
+    if (index >= size_) {
+        std::cerr << "error" << std::endl;
+        throw;
+    }
+    return data_[index];
+}
+
+template <typename T>
+const T& Vector<T>::operator[](size_t index) const {
+    if (index >= size_) {
+        std::cerr << "error" << std::endl;
+        throw;
+    }
+    return data_[index];
 }
 
 template <typename T>
